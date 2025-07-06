@@ -11,16 +11,16 @@ module "storage_account" {
   resource_group_name = "shashi_rg"
   location = "centralIndia"
 }
-# module "vnet" {
-#     depends_on = [ module.resource_group ] # firstly create resource group then create vnet that's why we put explicit dependecy on resource group
-#     source = "../modules/azurerm_vnet"
-#     virtual_network_name = "vnet-todoapp"
-#     resource_group_name = "shashi_rg"
-#     location = "centralIndia"
+module "vnet" {
+    depends_on = [ module.resource_group ] # firstly create resource group then create vnet that's why we put explicit dependecy on resource group
+    source = "../modules/azurerm_vnet"
+    virtual_network_name = "vnet-todoapp"
+    resource_group_name = "shashi_rg"
+    location = "centralIndia"
     
-#     address_space = ["10.0.0.0/16"]
+    address_space = ["10.0.0.0/16"]
 
-# }
+}
 
 # module "frontend_subnet" {
 #     depends_on = [ module.vnet ]
